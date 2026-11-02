@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>قائمة الطلاب - SkillSwap</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .btn-delete {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .btn-delete:hover { background-color: #c0392b; }
+        
+        .btn-connect {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .btn-connect:hover { background-color: #219653; }
+        
+        .requests-section {
+            margin-top: 40px;
+            background: #fdfcee;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #f5f0bb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" style="max-width: 1000px;">
+        <h2>الطلاب المسجلين في المنصة</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>الاسم</th>
+                    <th>السنة الدراسية</th>
+                    <th>الكلية</th>
+                    <th>الجامعة</th>
+                    <th>المهارة</th>
+                    <th>إجراء / Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student['name'] }}</td>
+                    <td>{{ student['year'] }}</td>
+                    <td>{{ student['college'] }}</td>
+                    <td>{{ student['university'] }}</td>
+                    <td>{{ student['skill'] }}</td>
+                    <td>
+                        <!-- زرار إرسال طلب تواصل -->
+                        <form action="{{ url_for('request_swap', student_id=student['id']) }}" method="POST" style="display:inline; margin-left: 5px;" onsubmit="let name = prompt('أدخل اسمك لإرسال طلب تبادل المهاره:'); if(!name) return false; this.innerHTML += '<input type=\'hidden\' name=\'sender_name\' value=\''+name+'\>';">
+                            <button type="submit" class="btn-connect">طلب تواصل</button>
+                        </form>
+                        
+                        <!-- زرار الحذف -->
+                        <form action="{{ url_for('delete_student', id=student['id']) }}" method="POST" style="display:inline;" onsubmit="return confirm('هل أنت متأكد من حذف هذا الطالب؟');">
+                            <button type="submit" class="btn-delete">حذف</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <!-- قسم عرض طلبات التبادل المتبادلة بين الطلاب -->
+        <div class="requests-section">
+            <h3>سجل طلبات التبادل بين الطلاب (Skill Swap Requests)</h3>
+            {% if requests %}
+            <ul>
+                {% for req in requests %}
+                <li>قام الطالب <strong>{{ req['sender_name'] }}</strong> بإرسال طلب تبادل مهارة إلى الطالب <strong>{{ req['receiver_name'] }}</strong> (الحالة: {{ req['status'] }})</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p style="text-align: center; color: #666;">لا توجد طلبات تواصل حتى الآن. جرب الضغط على "طلب تواصل" أمام أي طالب!</p>
+            {% endif %}
+        </div>
+
+        <br>
+        <a href="{{ url_for('index') }}" class="btn">تسجيل طالب جديد</a>
+    </div>
+</body>
+</html>

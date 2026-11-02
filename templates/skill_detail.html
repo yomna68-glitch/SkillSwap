@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>SkillSwap - تفاصيل المهارة</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">SkillSwap 🚀</div>
+        <nav>
+            <a href="{{ url_for('index') }}">الرئيسية</a>
+            <a href="{{ url_for('all_skills') }}">المهارات</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="form-container" style="text-align: right;">
+            <span class="badge">{{ skill['category'] }}</span>
+            <h1 style="color: #1e3d59; margin: 15px 0;">{{ skill['title'] }}</h1>
+            <p style="font-size: 1.1rem; color: #555; margin-bottom: 15px;"><strong>وصف المهارة المقدمة:</strong> {{ skill['description'] }}</p>
+            <p style="font-size: 1.05rem; color: #2b5882; margin-bottom: 20px;"><strong>🎯 المهارة المراد تعلمها بالمقابل:</strong> {{ skill['learn_skill'] }}</p>
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+            <p><strong>صاحب المهارة:</strong> {{ skill['owner'] }}</p>
+            <br>
+            
+            <!-- أزرار التفاعل (طلب التبادل والحذف والعودة) -->
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <button onclick="alert('تم إرسال طلب التبادل بنجاح إلى صاحب المهارة! 🚀')" class="btn-submit" style="background-color: #2b5882; cursor: pointer;">إرسال طلب تبادل (Swap Request)</button>
+                
+                <form action="{{ url_for('delete_skill', id=skill['id']) }}" method="POST" onsubmit="return confirm('هل أنت متأكد من حذف هذه المهارة؟');" style="margin:0;">
+                    <button type="submit" class="btn-submit" style="background-color: #d9534f; cursor: pointer;">حذف المهارة</button>
+                </form>
+            </div>
+            
+            <br>
+            <a href="{{ url_for('all_skills') }}" class="btn-details" style="display: block; text-align: center; margin-top: 10px;">العودة لقائمة المهارات</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © SkillSwap 2026</p>
+    </footer>
+</body>
+</html>

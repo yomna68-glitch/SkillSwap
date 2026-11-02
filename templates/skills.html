@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap - كل المهارات</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">SkillSwap 🚀</div>
+        <nav>
+            <a href="{{ url_for('index') }}">الرئيسية</a>
+            <a href="{{ url_for('all_skills') }}" class="active">المهارات</a>
+            <a href="{{ url_for('add_skill') }}" class="btn-nav">أضف مهارة</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="skills-section">
+            <h2 style="margin-bottom: 2rem;">جميع المهارات المتاحة على المنصة</h2>
+            
+            <div class="skills-grid">
+                {% for skill in skills %}
+                <div class="skill-card">
+                    <span class="badge">{{ skill['category'] }}</span>
+                    <h3>{{ skill['title'] }}</h3>
+                    <p>{{ skill['description'] }}</p>
+                    <div class="card-footer">
+                        <span class="owner">بواسطة: {{ skill['owner'] }}</span>
+                        <a href="{{ url_for('skill_detail', id=skill['id']) }}" class="btn-details">عرض التفاصيل</a>
+                    </div>
+                </div>
+                {% else %}
+                <p style="text-align: center; color: #777; grid-column: 1 / -1;">لا توجد مهارات مسجلة بعد.</p>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © SkillSwap 2026</p>
+    </footer>
+</body>
+</html>

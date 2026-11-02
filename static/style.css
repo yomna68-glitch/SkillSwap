@@ -1,0 +1,234 @@
+/* إعدادات عامة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f9f9fb;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* شريط التنقل (Navbar) */
+.navbar {
+    background-color: #1e3d59;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f5f0bb;
+}
+
+.navbar nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 20px;
+    transition: color 0.3s;
+}
+
+.navbar nav a:hover, .navbar nav a.active {
+    color: #f5f0bb;
+}
+
+.btn-nav {
+    background-color: #f5f0bb;
+    color: #1e3d59 !important;
+    padding: 6px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* الحاوية الرئيسية */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 20px;
+}
+
+/* القسم الترحيبي (Hero) */
+.hero {
+    text-align: center;
+    margin-bottom: 3rem;
+    background: linear-gradient(135deg, #1e3d59, #2b5882);
+    color: white;
+    padding: 3rem 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(30, 61, 89, 0.15);
+}
+
+.hero h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    color: #f5f0bb;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: #e0e0e0;
+}
+
+/* قسم المهارات */
+.skills-section h2 {
+    margin-bottom: 1.5rem;
+    color: #1e3d59;
+    border-bottom: 2px solid #f5f0bb;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* شبكة كارتات المهارات */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* تصميم الكارت الواحد */
+.skill-card {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 4px solid #1e3d59;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.badge {
+    background-color: #f5f0bb;
+    color: #1e3d59;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    align-self: flex-start;
+    margin-bottom: 10px;
+}
+
+.skill-card h3 {
+    font-size: 1.25rem;
+    color: #1e3d59;
+    margin-bottom: 10px;
+}
+
+.skill-card p {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eee;
+    padding-top: 12px;
+}
+
+.owner {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.btn-details {
+    background-color: #1e3d59;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+.btn-details:hover {
+    background-color: #2b5882;
+}
+
+/* تنسيق النماذج (Forms) */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-top: 5px solid #1e3d59;
+}
+
+.form-container h2 {
+    color: #1e3d59;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #1e3d59;
+    font-weight: bold;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    border-color: #1e3d59;
+    outline: none;
+    box-shadow: 0 0 5px rgba(30, 61, 89, 0.2);
+}
+
+.btn-submit {
+    background-color: #1e3d59;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #2b5882;
+}
+
+/* التذييل (Footer) */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #1e3d59;
+    color: white;
+    margin-top: 3rem;
+    font-size: 0.9rem;
+}

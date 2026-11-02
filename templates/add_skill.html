@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap - إضافة مهارة</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">SkillSwap 🚀</div>
+        <nav>
+            <a href="{{ url_for('index') }}">الرئيسية</a>
+            <a href="{{ url_for('all_skills') }}">المهارات</a>
+            <a href="{{ url_for('add_skill') }}" class="active btn-nav">أضف مهارة</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="form-container">
+            <h2>إضافة مهارة جديدة للمنصة</h2>
+            <form action="{{ url_for('add_skill') }}" method="POST">
+                
+                <div class="form-group">
+                    <label for="title">عنوان المهارة المقدمة:</label>
+                    <input type="text" id="title" name="title" required placeholder="مثال: برمجة بايثون، تصميم UI...">
+                </div>
+
+                <div class="form-group">
+                    <label for="category">التصنيف:</label>
+                    <input type="text" id="category" name="category" required placeholder="مثال: برمجة، رياضيات، تصميم...">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">وصف المهارة:</label>
+                    <textarea id="description" name="description" rows="4" required placeholder="اكتب نبذة مختصرة عن المهارة اللي هتقدمها..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="learn_skill">المهارة التي يريد تعلمها بالمقابل:</label>
+                    <input type="text" id="learn_skill" name="learn_skill" required placeholder="مثال: قواعد البيانات، تصميم، رياضيات...">
+                </div>
+
+                <div class="form-group">
+                    <label for="owner">اسم الطالب:</label>
+                    <input type="text" id="owner" name="owner" required placeholder="اسمك الكريم...">
+                </div>
+
+                <button type="submit" class="btn-submit">حفظ ونشر المهارة</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © SkillSwap 2026</p>
+    </footer>
+</body>
+</html>
